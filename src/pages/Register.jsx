@@ -5,36 +5,12 @@ import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/regi.avif";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 import { Formik } from "formik";
-import * as Yup from "yup";
-import RegisterForm from "../components/RegisterForm";
 
 const Register = () => {
-  const SignupSchema = Yup.object().shape({
-    username: Yup.string()
-      .min(5, "Too short. Username should be more than 5 character")
-      .max(50, "Too Long! Username shouldn't be more than 50 character")
-      .required("Required"),
-    firstName: Yup.string()
-      .min(2, "Too Short!")
-      .max(50, "Too Long!")
-      .required("Required"),
-    lastName: Yup.string()
-      .min(2, "Too Short!")
-      .max(50, "Too Long!")
-      .required("Required"),
-    email: Yup.string().email("Invalid email").required("Required"),
-    password: Yup.string()
-      .min(8, "Password should be more than 8 character")
-      .matches(/[a-z]/, "Password should include lowercase")
-      .matches(/[A-Z]/, "Password should include lowercase")
-      .matches(/\d+/, "Password should include numeric")
-      .matches(/[@$?!%&*_-]+/, "Password should include special characters (@$?!%&*_-)"),
-  });
-
   return (
     <Container maxWidth="lg">
       <Grid
@@ -69,24 +45,38 @@ const Register = () => {
             Register
           </Typography>
 
-          {/* /* -------------------------------------------------------------------------- */}
-          {/* FORMİK YAPISI */}
           <Formik
             initialValues={{
               username: "",
-              firstName: "",
-              lastName: "",
+              firstname: "",
               email: "",
               password: "",
             }}
-            validationSchema={SignupSchema}
-            onSubmit={(values)=>{
-                console.log(values)
-            }}
-
-            component={(props)=>( <RegisterForm  {...props}   />  )}
-          />
-        {/* /* -------------------------------------------------------------------------- */}
+            validate={{}}
+            onSubmit={{}}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              isSubmitting,
+            }) => (
+              <form action="">
+                <TextField
+                  name="username"
+                  value={values.username}
+                  // id="outlined-basic"
+                  label="Username"
+                  variant="outlined"
+                  fullWidth
+                  onChange={handleChange}
+                />
+              </form>
+            )}
+          </Formik>
 
           <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
             <Link to="/">Already have an account? Sign in</Link>
