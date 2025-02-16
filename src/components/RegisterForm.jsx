@@ -1,7 +1,7 @@
-import { TextField } from "@mui/material";
+import { TextField, Button } from "@mui/material";
 
-const RegisterForm = () => {
-    ({
+const RegisterForm = (
+    {
         values,
         errors,
         touched,
@@ -9,9 +9,10 @@ const RegisterForm = () => {
         handleBlur,
         handleSubmit,
         isSubmitting,
-      })=>
+      }
+) => {
+
   return (
-    <div>
          <form onSubmit={handleSubmit}> {/* Fixed: Add onSubmit to form */}
                 <TextField
                   name="username"
@@ -86,7 +87,6 @@ const RegisterForm = () => {
                   SEND
                 </Button>
               </form>
-    </div>
   );
 };
 

@@ -4,15 +4,17 @@ import Avatar from "@mui/material/Avatar";
 import LockIcon from "@mui/icons-material/Lock";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import { Box, Button, TextField } from "@mui/material";
+import { Box} from "@mui/material";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import register from "../assets/register.png";
+import registerimg from "../assets/registerimg.png";
 import RegisterForm from "../components/RegisterForm";
+import useAuthCall from "../hook/useAuthCall";
 
 const Register = () => {
+  const { register } = useAuthCall();
   const signupSchema = Yup.object().shape({
     username: Yup.string()
       .min(2, "Too Short!")
@@ -34,12 +36,14 @@ const Register = () => {
       .matches(/[a-z]/, "Password must contain lowercase letters")
       .matches(/[A-Z]/, "Password must contain uppercase letters")
       .matches(/[0-9]/, "Password must contain numbers")
-      .matches(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/, "Password must contain special characters")
-     
+      .matches(
+        /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
+        "Password must contain special characters"
+      ),
   });
 
   const handleSubmit = (values) => {
-    console.log(values); 
+    console.log(values);
   };
 
   return (
@@ -84,21 +88,25 @@ const Register = () => {
               email: "",
               password: "",
             }}
-            validationSchema={signupSchema} 
-            onSubmit={(values)=>console.log(values)}
-          >
-            component={(props)=>(<RegisterForm {...props}/>)}
-         
-          </Formik>
+            validationSchema={signupSchema}
+            onSubmit={(values) => register(values)}
+            component={(props) => <RegisterForm {...props} />}
+          />
 
           <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
             <Link to="/">Already have an account? Sign in</Link>
           </Box>
         </Grid>
-      <Box sx={{ width: "50%", display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <AuthImage image={register}  /> 
-      </Box>
-       
+        <Box
+          sx={{
+            width: "50%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <AuthImage image={registerimg} />
+        </Box>
       </Grid>
     </Container>
   );
