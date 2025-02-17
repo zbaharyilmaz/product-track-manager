@@ -12,7 +12,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    login(username, password);  // Login fonksiyonunu çağır
+    login(username, password);  
   };
 
   return (
