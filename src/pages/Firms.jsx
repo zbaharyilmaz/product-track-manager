@@ -2,6 +2,7 @@
 const Firms = () => {
   return (
     <div>
+      FIRMS
     </div>
   );
 };

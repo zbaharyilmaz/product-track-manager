@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
+
   const theme = createTheme({
     palette: {
       primary: {
@@ -15,8 +16,19 @@ function App() {
         main: "#02735e",
         second: "#ece9d7",
       },
+      customColors: {
+        color1: "#593954",  
+        color2: "#013440",  
+        color3: "#026873",  
+        color4: "#038C8C", 
+        color5: "#038C7F", 
+      },
+    },
+    typography: {
+      fontFamily: '"Neucha", serif',
     },
   });
+  
   return (
     <ErrorBoundary>
       <ThemeProvider theme={theme}>

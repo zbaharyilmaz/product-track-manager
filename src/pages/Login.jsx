@@ -37,7 +37,7 @@ const Login = () => {
         <Typography
           component="h1"
           variant="h5"
-          sx={{ marginTop: 2, fontFamily: "inherit" }}
+          sx={{ marginTop: 2 }}
         >
           Sign in
         </Typography>
@@ -74,7 +74,6 @@ const Login = () => {
               mt: 3,
               mb: 2,
               backgroundColor: "primary.main",
-              fontFamily: "inherit",
               padding: "0.5rem",
               "&:hover": {
                 backgroundColor: "secondary.main",

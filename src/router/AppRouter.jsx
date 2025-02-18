@@ -10,8 +10,6 @@ import Sales from "../pages/Sales";
 import Products from "../pages/Products";
 import Home from "../pages/Home";
 
-
-
 const AppRouter = () => {
   return (
     <Router>
@@ -19,14 +17,13 @@ const AppRouter = () => {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/stock" element={<PrivateRouter />}>
-          {/* <Route path="" element={<Home />}> */}
-          <Route index element={<Home/>}/>
           <Route path="" element={<Dashboard />}>
-            <Route path="firms" elements={<Firms />} /> {/*veya /stock/firms */}
-            <Route path="brands" elements={<Brands />} />
-            <Route path="purchases" elements={<Purchases />} />
-            <Route path="sales" elements={<Sales />} />
-            <Route path="products" elements={<Products />} />
+            <Route index element={<Home />} />
+            <Route path="firms" element={<Firms />} />
+            <Route path="brands" element={<Brands />} />
+            <Route path="purchases" element={<Purchases />} />
+            <Route path="sales" element={<Sales />} />
+            <Route path="products" element={<Products />} />
           </Route>
         </Route>
       </Routes>

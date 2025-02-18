@@ -2,6 +2,7 @@
 const Purchases = () => {
   return (
     <div>
+      PURCHASES
     </div>
   );
 };
