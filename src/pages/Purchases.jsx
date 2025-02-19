@@ -1,10 +1,9 @@
+import React from 'react'
 
 const Purchases = () => {
   return (
-    <div>
-      PURCHASES
-    </div>
-  );
-};
+    <div>Purchases</div>
+  )
+}
 
-export default Purchases;
+export default Purchases

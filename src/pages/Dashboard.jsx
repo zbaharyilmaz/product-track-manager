@@ -4,13 +4,11 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -18,6 +16,14 @@ import Button from "@mui/material/Button";
 import useAuthCall from "../hook/useAuthCall";
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import LogoutIcon from "@mui/icons-material/Logout";
+import BusinessRoundedIcon from "@mui/icons-material/BusinessRounded";
+import AddBusinessRoundedIcon from "@mui/icons-material/AddBusinessRounded";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import SellRoundedIcon from "@mui/icons-material/SellRounded";
+import CategoryRoundedIcon from "@mui/icons-material/CategoryRounded";
+import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
+import QueryStatsRoundedIcon from "@mui/icons-material/QueryStatsRounded";
 
 const drawerWidth = 240;
 
@@ -44,30 +50,40 @@ function Dashboard(props) {
   };
 
   const links = [
-    { title: "Dashboard", url: "" },
-    { title: "Firms", url: "firms" },
-    { title: "Brands", url: "brands" },
-    { title: "Purchases", url: "purchases" },
-    { title: "Sales", url: "sales" },
-    { title: "Products", url: "products" },
-    { title: "Home", url: "home" },
+    { title: "Home", url: "home", icon: <HomeRoundedIcon /> },
+    { title: "Dashboard", url: "", icon: <QueryStatsRoundedIcon /> },
+    { title: "Firms", url: "firms", icon: <BusinessRoundedIcon /> },
+    { title: "Brands", url: "brands", icon: <AddBusinessRoundedIcon /> },
+    { title: "Purchases", url: "purchases", icon: <ShoppingCartRoundedIcon /> },
+    { title: "Sales", url: "sales", icon: <SellRoundedIcon /> },
+    { title: "Products", url: "products", icon: <CategoryRoundedIcon /> },
   ];
 
   const drawer = (
     <div>
-      <List sx={{ marginTop: "30px" }}>
+      <List sx={{ marginTop: "75px" }}>
         {links.map((text, index) => (
           <ListItem key={index} disablePadding>
             <ListItemButton
               onClick={() => navigate(`${text.url}`)}
-              sx={{ fontFamily: '"Neucha", serif' }}
+              sx={{
+                border: "2px solid #ece9d7",
+                margin: "5px",
+                borderRadius: "5px",
+                transition: "all 0.3s ease-in-out",
+                "&:hover": {
+                  backgroundColor: "primary.main",
+                  scale: "1.05",
+                },
+                "&:hover *": {
+                  color: "customColors.color5",
+                },
+              }}
             >
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              <ListItemIcon sx={{ minWidth: "40px", color: "primary.main" }}>
+                {text.icon}
               </ListItemIcon>
-              <ListItemText
-                primary={text.title}
-              />
+              <ListItemText primary={text.title} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -89,6 +105,8 @@ function Dashboard(props) {
           height: "100px",
           display: "flex",
           justifyContent: "center",
+          borderRadius: " 5px",
+          border: "2px solid secondary",
         }}
       >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -112,8 +130,26 @@ function Dashboard(props) {
           >
             PRODUCT TRACK MANAGER
           </Typography>
-          <Button color="inherit" onClick={logout}>
+          <Button
+            onClick={logout}
+            sx={{
+             
+              color: "secondary.second",
+              margin: "3px",
+              borderRadius: "5px",
+              transition: "all 0.3s ease-in-out",
+              "&:hover": {
+                color: "customColors.color4",
+                backgroundColor: "customColors.color5",
+                scale: "1.05",
+              },
+              "&:hover *": {
+                color: "primary.main",
+              },
+            }}
+          >
             Logout
+            <LogoutIcon sx={{ margin: ".5rem", width: "25px" }} />
           </Button>
         </Toolbar>
       </AppBar>

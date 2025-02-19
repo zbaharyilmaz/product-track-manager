@@ -1,98 +1,74 @@
-import user from "../assets/user.png";
-import { Avatar, Box, Button, Container, TextField, Typography } from "@mui/material";
-import useAuthCall from "../hook/useAuthCall";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import LockIcon from "@mui/icons-material/Lock";
+import image from "../assets/hero.png";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-
+import AuthHeader from "../components/AuthHeader";
+import AuthImage from "../components/AuthImage";
+import { Formik } from "formik";
+import useAuthCall from "../hook/useAuthCall";
+import LoginForm from "../components/LoginForm";
+import * as Yup from "yup";
 const Login = () => {
   const { login } = useAuthCall();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    login(username, password);  
-  };
-
+  const SignupSchema = Yup.object().shape({
+    username: Yup.string()
+      .min(5, "Kullanıcı adı 5 karakterden az olamaz")
+      .max(50, "Kullanıcı adı 50 karakterden fazla olamaz")
+      .required("Kullanıcı adı zorunludur"),
+    password: Yup.string().required("password zorunludur"),
+  });
   return (
-    <Container component="main" maxWidth="xs">
-      <Box
+    <Container maxWidth="lg">
+      <Grid
+        container
+        justifyContent="center"
+        direction="row-reverse"
         sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          height: "100vh",
+          p: 2,
         }}
       >
-        <Avatar
-          alt="avatar_img"
-          src={user}
-          sx={{
-            width: 100,
-            height: 100,
-            border: "primary.main 0.3rem solid",
-          }}
-        />
-        <Typography
-          component="h1"
-          variant="h5"
-          sx={{ marginTop: 2 }}
-        >
-          Sign in
-        </Typography>
-        <Box component="form" noValidate sx={{ mt: 1 }} onSubmit={handleSubmit}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="username"
-            label="Username"
-            name="username"
-            autoComplete="username"
-            autoFocus
-            value={username}
-            onChange={(e) => setUsername(e.target.value)} 
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            placeholder="Password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
+        <AuthHeader />
+
+        <Grid item xs={12} sm={10} md={6}>
+          <Avatar
             sx={{
-              mt: 3,
-              mb: 2,
-              backgroundColor: "primary.main",
-              padding: "0.5rem",
-              "&:hover": {
-                backgroundColor: "secondary.main",
-              },
+              backgroundColor: "secondary.main",
+              m: "auto",
+              width: 40,
+              height: 40,
             }}
           >
-            Sign In
-          </Button>
-        </Box>
-      </Box>
+            <LockIcon size="30" />
+          </Avatar>
+          <Typography variant="h4" align="center" mb={4} color="secondary.main">
+            SIGN IN
+          </Typography>
 
-      <Typography variant="body2" color="text.secondary" align="center">
-        {"Copyright © "}
-        <Link color="primary.main" href="https://github.com/zbaharyilmaz">
-          zbaharyilmaz
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
+          <Formik
+            initialValues={{ username: "", password: "" }}
+            validationSchema={SignupSchema}
+            onSubmit={(values, actions) => {
+              login(values);
+              console.log(values, "loginiçinde");
+              actions.resetForm();
+              actions.setSubmitting(false);
+            }}
+            component={(props) => <LoginForm {...props} />}
+          />
+
+          <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
+            <Link to="/register">Don't have an account? Sign Up</Link>
+          </Box>
+        </Grid>
+
+        <AuthImage image={image} />
+      </Grid>
     </Container>
   );
 };

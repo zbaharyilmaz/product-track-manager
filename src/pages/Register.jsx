@@ -2,23 +2,26 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import LockIcon from "@mui/icons-material/Lock";
+import image from "../assets/regi.avif";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import { Box} from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import AuthHeader from "../components/AuthHeader";
 import AuthImage from "../components/AuthImage";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import registerimg from "../assets/registerimg.png";
 import RegisterForm from "../components/RegisterForm";
 import useAuthCall from "../hook/useAuthCall";
 
 const Register = () => {
-  const { register } = useAuthCall();
-  const signupSchema = Yup.object().shape({
+ 
+  // Burada useAuthCall da yazdığımız hook içindeki fonksiyonu çağırıyoruz
+  const {register}=useAuthCall()
+
+  const SignupSchema = Yup.object().shape({
     username: Yup.string()
-      .min(2, "Too Short!")
-      .max(50, "Too Long!")
+      .min(5, "Too short. Username should be more than 5 character")
+      .max(50, "Too Long! Username shouldn't be more than 50 character")
       .required("Required"),
     firstName: Yup.string()
       .min(2, "Too Short!")
@@ -30,21 +33,12 @@ const Register = () => {
       .required("Required"),
     email: Yup.string().email("Invalid email").required("Required"),
     password: Yup.string()
-      .min(8, "Password must be at least 8 characters")
-      .max(15, "Too Long!")
-      .required("Required")
-      .matches(/[a-z]/, "Password must contain lowercase letters")
-      .matches(/[A-Z]/, "Password must contain uppercase letters")
-      .matches(/[0-9]/, "Password must contain numbers")
-      .matches(
-        /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
-        "Password must contain special characters"
-      ),
+      .min(8, "Password should be more than 8 character")
+      .matches(/[a-z]/, "Password should include lowercase")
+      .matches(/[A-Z]/, "Password should include lowercase")
+      .matches(/\d+/, "Password should include numeric")
+      .matches(/[@$?!%&*_-]+/, "Password should include special characters (@$?!%&*_-)"),
   });
-
-  const handleSubmit = (values) => {
-    console.log(values);
-  };
 
   return (
     <Container maxWidth="lg">
@@ -80,6 +74,8 @@ const Register = () => {
             Register
           </Typography>
 
+          {/* /* -------------------------------------------------------------------------- */}
+          {/* FORMİK YAPISI */}
           <Formik
             initialValues={{
               username: "",
@@ -88,25 +84,28 @@ const Register = () => {
               email: "",
               password: "",
             }}
-            validationSchema={signupSchema}
-            onSubmit={(values) => register(values)}
-            component={(props) => <RegisterForm {...props} />}
+            validationSchema={SignupSchema}
+            onSubmit={(values)=>{
+                console.log(values) 
+                register(values)
+            }}
+
+            component={(props)=>( <RegisterForm  {...props}   />  )}
           />
+
+
+        
+
+
+
+        {/* /* -------------------------------------------------------------------------- */}
 
           <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
             <Link to="/">Already have an account? Sign in</Link>
           </Box>
         </Grid>
-        <Box
-          sx={{
-            width: "50%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <AuthImage image={registerimg} />
-        </Box>
+
+        <AuthImage image={image} />
       </Grid>
     </Container>
   );
