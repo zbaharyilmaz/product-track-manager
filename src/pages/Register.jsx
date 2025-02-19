@@ -14,9 +14,8 @@ import RegisterForm from "../components/RegisterForm";
 import useAuthCall from "../hook/useAuthCall";
 
 const Register = () => {
- 
-  // Burada useAuthCall da yazdığımız hook içindeki fonksiyonu çağırıyoruz
-  const {register}=useAuthCall()
+
+  const { register } = useAuthCall();
 
   const SignupSchema = Yup.object().shape({
     username: Yup.string()
@@ -37,7 +36,10 @@ const Register = () => {
       .matches(/[a-z]/, "Password should include lowercase")
       .matches(/[A-Z]/, "Password should include lowercase")
       .matches(/\d+/, "Password should include numeric")
-      .matches(/[@$?!%&*_-]+/, "Password should include special characters (@$?!%&*_-)"),
+      .matches(
+        /[@$?!%&*_-]+/,
+        "Password should include special characters (@$?!%&*_-)"
+      ),
   });
 
   return (
@@ -75,7 +77,7 @@ const Register = () => {
           </Typography>
 
           {/* /* -------------------------------------------------------------------------- */}
-          {/* FORMİK YAPISI */}
+
           <Formik
             initialValues={{
               username: "",
@@ -85,20 +87,14 @@ const Register = () => {
               password: "",
             }}
             validationSchema={SignupSchema}
-            onSubmit={(values)=>{
-                console.log(values) 
-                register(values)
+            onSubmit={(values) => {
+              console.log(values);
+              register(values);
             }}
-
-            component={(props)=>( <RegisterForm  {...props}   />  )}
+            component={(props) => <RegisterForm {...props} />}
           />
 
-
-        
-
-
-
-        {/* /* -------------------------------------------------------------------------- */}
+          {/* /* -------------------------------------------------------------------------- */}
 
           <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
             <Link to="/">Already have an account? Sign in</Link>

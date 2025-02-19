@@ -1,9 +1,3 @@
-// Custom Hook'lar, tekrar kullanılabilir ve modüler mantık oluşturmamızı
-// sağlar.
-// ✅ İsmi "use" ile başlamalı ve içinde React Hook kullanmalı.
-// ✅ JSX döndürmez, sadece veri veya fonksiyon döndürür.
-// ✅ Eğer başka dosyada kullanacaksan, export etmelisin.
-
 import React from "react";
 import { useDispatch } from "react-redux";
 import {
