@@ -13,6 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
+import { btnStyle, selectedStyle } from "../styles/globalStyles";
 
 const icon = (name) => `/assets/navbar/${name}.svg`;
 
@@ -49,30 +50,11 @@ const links = [
   },
 ];
 
-const btnStyle = {
-  color: "secondary.main",
-  borderRadius: "1rem",
-  transition:"all 0.6s ease-in-out",
-  "&:hover": {
-    backgroundColor: "secondary.main",
-    color: "white",
-  },
-}
-const selectedStyle = {
-  backgroundColor: "secondary.second",
-  color: "white",
-  borderRadius: "1rem",
-  "&:hover": {
-    backgroundColor: "secondary.main",
-    color: "white",
-  },
-}
-
 const MenuListItems = () => {
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
   // const {pathname} = useLocation()
-  console.log(location)
+  console.log(location);
   return (
     <div>
       <Toolbar />
@@ -84,22 +66,6 @@ const MenuListItems = () => {
               onClick={() => navigate(item.url)}
               sx={item.url === location.pathname ? selectedStyle : btnStyle}
             >
-              {/* <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon> */}
-              {/* <Box 
-                sx={{
-                  backgroundImage: `url(${item.icon})`,
-                  backgroundPosition:"center",
-                  backgroundSize:"cover",
-                  backgroundRepeat:"no-repeat",
-                  width:"24px",
-                  height:"24px",
-                  backgroundColor:"red",
-                  mr:2
-                }}
-             /> */}
-
               <Box
                 sx={{
                   width: "24px",
