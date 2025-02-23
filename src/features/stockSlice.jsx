@@ -23,12 +23,11 @@ const stockSlice = createSlice({
     },
     stockSuccess: (state, { payload }) => {
       console.log("Payload", payload);
-      state[payload.url] = payload.data;
+      state[payload.url] = payload.data.data;
       state.loading = false;
       state.error = false;
     },
-  },
-});
+}});
 
 export const { fetchStart, fetchFail, stockSuccess } = stockSlice.actions;
 export default stockSlice.reducer;
