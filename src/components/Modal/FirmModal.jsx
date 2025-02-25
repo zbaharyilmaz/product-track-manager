@@ -20,24 +20,23 @@ const style = {
 };
 
 export default function FirmModal({ open, handleClose }) {
-    const {createStockData}=useStockCall()
-    const [info,setInfo]= useState({
-        name:"",
-        adress:"",
-        phone:"",
-        image:""
-    })
+  const { createStockData } = useStockCall();
+  const [info, setInfo] = useState({
+    name: "",
+    adress: "",
+    phone: "",
+    image: "",
+  });
   const handleChange = (e) => {
     console.log(e.target.value);
     console.log(e.target.name);
     // {[e.target.name]:e.target.value}
-    setInfo({...info, [e.target.name]:e.target.value})
+    setInfo({ ...info, [e.target.name]: e.target.value });
   };
-  const handleSubmit=(e)=>{
-    e.preventDefault()
-    createStockData("firms",info)
-
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createStockData("firms", info);
+  };
 
   return (
     <div>
@@ -48,8 +47,12 @@ export default function FirmModal({ open, handleClose }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Box component="form" onSubmit={handleSubmit}>
-          <TextField
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+          >
+            <TextField
               label="Firm Name"
               name="name"
               type="text"
