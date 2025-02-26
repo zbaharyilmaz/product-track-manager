@@ -37,11 +37,11 @@ const Firms = () => {
       <Grid container spacing={2} mt={2}>
         {firms.map((firm, index) => (
           <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={index}>
-            <FirmsCard {...firm} setInitialState={setInitialState}/>
+            <FirmsCard {...firm} setInitialState={setInitialState} handleOpen={handleOpen} />
           </Grid>
         ))}
       </Grid>
-      <FirmModal open={open} handleClose={handleClose} />
+      <FirmModal open={open} handleClose={handleClose} initialState={initialState} />
     </Container>
   );
 };

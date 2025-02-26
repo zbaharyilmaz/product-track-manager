@@ -8,9 +8,17 @@ import Typography from "@mui/material/Typography";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import useStockCall from "../../hook/useStockCall";
-import {btnStyle} from "../../styles/globalStyles";
+import { btnStyle } from "../../styles/globalStyles";
 
-export default function FirmsCard({ _id, name, image, phone, address }) {
+export default function FirmsCard({
+  _id,
+  name,
+  image,
+  phone,
+  address,
+  handleOpen,
+  setInitialState
+}) {
   const { deleteStockData } = useStockCall();
 
   return (
@@ -48,7 +56,13 @@ export default function FirmsCard({ _id, name, image, phone, address }) {
           sx={btnStyle}
           onClick={() => deleteStockData("firms", _id)}
         />
-        <EditIcon />
+        <EditIcon
+          sx={btnStyle}
+          onClick={() => {
+            setInitialState({ _id, name, image, phone, address });
+            handleOpen();
+          }}
+        />
       </CardActions>
     </Card>
   );

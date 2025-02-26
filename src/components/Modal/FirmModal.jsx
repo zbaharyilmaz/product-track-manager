@@ -6,6 +6,7 @@ import Modal from "@mui/material/Modal";
 import { useState } from "react";
 import { TextField } from "@mui/material";
 import useStockCall from "../../hook/useStockCall";
+import { useEffect } from "react";
 
 const style = {
   position: "absolute",
@@ -19,8 +20,8 @@ const style = {
   p: 4,
 };
 
-export default function FirmModal({ open, handleClose }) {
-  const { createStockData } = useStockCall();
+export default function FirmModal({ open, handleClose, initialState }) {
+  const { createStockData, updateStockData } = useStockCall();
   const [info, setInfo] = useState({
     name: "",
     adress: "",
@@ -35,9 +36,16 @@ export default function FirmModal({ open, handleClose }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    createStockData("firms", info);
+    if (info._id) {
+      updateStockData("firms", info);
+    } else {
+      createStockData("firms", info);
+    }
+    handleClose()
   };
-
+  useEffect(() => {
+    setInfo(initialState);
+  }, [initialState]);
   return (
     <div>
       <Modal
