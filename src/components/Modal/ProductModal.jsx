@@ -3,17 +3,16 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { TextField } from "@mui/material";
 import { useState } from "react";
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
 import useStockCall from "../../hook/useStockCall";
 import { useEffect } from "react";
+import { FormControl } from "@mui/material";
+import { InputLabel } from "@mui/material";
+import { Select } from "@mui/material";
+import { MenuItem } from "@mui/material";
 import { useSelector } from "react-redux";
+import { gridContentHeightSelector } from "@mui/x-data-grid/internals";
 
 const style = {
   position: "absolute",
@@ -27,25 +26,30 @@ const style = {
   p: 4,
 };
 
-export default function ProductModal({ handleClose, open, initialState }) {
+export default function ProductModal({ handleClose, open ,initialState}) {
+ 
+  const { categories , brands} = useSelector((state) => state.stock);
   const {createStockData,updateStockData}=useStockCall()
-  const { categories, brands } = useSelector((state) => state.stock);
-    const [info, setInfo] = useState(initialState);
-    console.log("initialState:", initialState);
+  console.log("categories", categories);
+
+   const [info, setInfo] = useState(initialState);
+  
+    const handleChange = (e) => {
+      setInfo({ ...info, [e.target.name]: e.target.value });
+    };
 
     const handleSubmit = (e) => {
       e.preventDefault();
       if (info._id) {
+        //* id varsa edit işlemi
         updateStockData("products", info);
       } else {
+        //* id yoksa create işlemi
         createStockData("products", info);
       }
       handleClose();
     };
-  const handleChange=(e)=>{
-    setInfo({...info, [e.target.name]: e.target.value})
-  }
-
+  
   return (
     <div>
       <Modal
@@ -68,10 +72,10 @@ export default function ProductModal({ handleClose, open, initialState }) {
                 value={info.categoryId}
                 label="Category"
                 onChange={handleChange}
-                required
+                name="categoryId"
               >
-                {categories.map((category) => (
-                  <MenuItem key={category._id} value={category._id}>{category.name}</MenuItem>
+                {categories.map((cate,index) => (
+                  <MenuItem  key={cate._id}   value={cate._id}>{cate.name}</MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -83,25 +87,25 @@ export default function ProductModal({ handleClose, open, initialState }) {
                 value={info.brandId}
                 label="Brands"
                 onChange={handleChange}
-                required
+                name="brandId"
+
               >
-                {brands.map((brand) => (
-                  <MenuItem key={brand._id} value={brand._id}>{brand.name}</MenuItem>
+                {brands.map((brand,index) => (
+                  <MenuItem  key={brand._id} value={brand._id}>{brand.name}</MenuItem>
                 ))}
               </Select>
             </FormControl>
 
             <TextField
               label="Product Name"
-              name="name"
-              id="name"
+              id="image"
               type="text"
               variant="outlined"
               value={info.name}
               onChange={handleChange}
+              name="name"
               required
             />
-
             <Button type="submit">SUBMIT FIRM</Button>
           </Box>
         </Box>

@@ -1,51 +1,77 @@
-import { Button, Container, Typography } from "@mui/material";
-import React from "react";
-import ProductsTable from "../components/Table/ProductsTable";
-import useStockCall from "../hook/useStockCall";
-import { useEffect } from "react";
-import ProductModal from "../components/Modal/ProductModal";
-import { useState } from "react";
+import { Typography } from '@mui/material'
+import { Button } from '@mui/material'
+import { Container } from '@mui/material'
+import React, { useState } from 'react'
+import ProductsTable from '../components/Table/ProductsTable'
+import useStockCall from '../hook/useStockCall'
+import { useEffect } from 'react'
+import ProductModal from "../components/Modal/ProductModal"
+import { useSelector } from 'react-redux'
+
+
 const Products = () => {
+  const {getStockData, getProCatBrand}=useStockCall()
+  const { loading, error } = useSelector((state) => state.stock);
 
-  const [open, setOpen]= useState(false)
-  const handleOpen=()=>setOpen(true)
-  const handleClose=()=>setOpen(false)
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
-  const[initialState, setInitialState]=useState({
-    categoryId: "",
-    brandId: "",
-    name: "",
-    })
+    const [initialState,setInitialState]=useState({
+      categoryId:"", brandId:"", name: "" 
 
+      })
+    
+   
+  useEffect(()=>{
+    getProCatBrand()
 
-  const { getStockData } = useStockCall();
-  useEffect(() => {
-    getStockData("products");
-    getStockData("brands");
-    getStockData("categories");
-  }, []);
+  },[])
 
-  return(
-  <Container>
+  return (
+    <Container maxWidth={"xl"}>
     <Typography
-      variant="h4"
-      color="customColors.color1"
       align="center"
-      gutterBottom
+      variant="h4"
+      component="h1"
+      color="secondary.second"
+      
     >
       Products
     </Typography>
-    <Button onClick={handleOpen} variant="contained">NEW PRODUCT</Button>
-    <ProductsTable />
+    {loading ? (
+      <Typography
+        align="center"
+        variant="h5"
+        component="h3"
+        color="secondary.second"
+      >
+        Loading....
+      </Typography>
+    ) : error ? (
+      <Typography align="center" variant="h5" component="h3" color="error">
+        Something went wrong...
+      </Typography>
+    ) : (
+      <>
+        <Button variant="contained" onClick={handleOpen} sx={{marginBottom:"1rem"}}>
+          New Product
+        </Button>
 
-    {open && (
+        <ProductsTable  />
+
+        {open && (
           <ProductModal
             open={open}
             handleClose={handleClose}
             initialState={initialState}
           />
         )}
-  </Container>)
-};
+      </>
+    )}
+  </Container>
+   
+  )
+}
 
-export default Products;
+export default Products
