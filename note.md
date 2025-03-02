@@ -72,3 +72,12 @@ Lifting State Up (State’i Yukarı Taşımak), React’te birden fazla bileşen
 React’te veri akışı tek yönlüdür (parent → child).
 Eğer iki veya daha fazla bileşen aynı state’i kullanıyorsa, bu state onların en yakın ortak ebeveyn bileşenine taşınmalıdır.
 Böylece tüm ilgili bileşenler bu state’e prop olarak erişebilir.
+
+
+
+
+
+
+pnpm add -D tailwindcss@3.4.17 postcss autoprefixer
+npx tailwindcss init -p      
+pnpm add @tremor/react

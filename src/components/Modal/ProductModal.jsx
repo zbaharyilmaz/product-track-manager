@@ -30,7 +30,6 @@ export default function ProductModal({ handleClose, open ,initialState}) {
  
   const { categories , brands} = useSelector((state) => state.stock);
   const {createStockData,updateStockData}=useStockCall()
-  console.log("categories", categories);
 
    const [info, setInfo] = useState(initialState);
   

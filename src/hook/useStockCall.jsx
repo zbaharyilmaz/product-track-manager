@@ -48,28 +48,83 @@ const useStockCall = () => {
       dispatch(fetchFail());
     }
   };
+  const getProCatBrand = async () => {
+    dispatch(fetchStart());
 
-  const getProCatBrand=async()=>{
-    dispatch(fetchStart())
-    try{
+    try {
+      // const [a,b,c]=[2,4,6]  => Array destructure
 
-      const arr= await Promise.all([
+      const [products, categories, brands] = await Promise.all([
         axiosWithToken("products"),
         axiosWithToken("categories"),
-        axiosWithToken("brands")
-      ])
-      console.log(arr);
-      dispatch(getProCatBrandSuccess([products?.data?.data, categories?.data?.data, brands?.data?.data]))
-
-
-    }catch(error){
-      dispatch(fetchFail())
-
+        axiosWithToken("brands"),
+      ]);
+      dispatch(
+        getProCatBrandSuccess([
+          products?.data?.data,
+          categories?.data?.data,
+          brands?.data?.data,
+        ])
+      );
+    } catch (error) {
+      dispatch(fetchFail());
     }
+  };
 
-  }
+  /* -------------------------------------------------------------------------- */
+  const getPurcBrandPro = async () => {
+    dispatch(fetchStart());
 
-  return { getStockData, deleteStockData, createStockData, updateStockData, getProCatBrand};
+    try {
+      // const [a,b,c]=[2,4,6]  => Array destructure
+
+      const [purchases, brands, products,firms] = await Promise.all([
+        axiosWithToken("purchases"),
+        axiosWithToken("brands"),
+        axiosWithToken("products"),
+        axiosWithToken("firms"),
+      ]);
+
+      dispatch(
+        getPurcBrandProSuccess([
+          purchases?.data?.data,
+          brands?.data?.data,
+          products?.data?.data,
+          firms?.data?.data,
+        ])
+      );
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+  /* -------------------------------------------------------------------------- */
+  const getSalesBrandPro = async () => {
+    dispatch(fetchStart());
+
+    try {
+      const [sales, brands, products] = await Promise.all([
+        axiosWithToken("sales"),
+        axiosWithToken("brands"),
+        axiosWithToken("products"),
+      ]);
+
+      dispatch(
+        getSalesBrandProSuccess([sales?.data?.data, brands?.data?.data, products?.data?.data])
+      );
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+
+  return {
+    getStockData,
+    deleteStockData,
+    createStockData,
+    updateStockData,
+    getProCatBrand,
+    getPurcBrandPro,
+    getSalesBrandPro,
+  };
 };
 
 export default useStockCall;
