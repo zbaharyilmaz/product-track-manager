@@ -19,17 +19,17 @@ const data = [
     {
       name: "Sales",
       value: `€${totalSales}`,
-      color:"indigo"
+      color:"amber"
     },
     {
       name: "Cash",
       value: `€${totalCash}`,
-    color:"purple"
+    color:"zinc"
     },
     {
       name: "Purchases",
       value: `€${totalPurchases}`,
-    color:"red"
+    color:"rose"
     },
   ];
   return (
