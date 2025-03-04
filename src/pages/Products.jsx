@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import { Container } from "@mui/material";
 import React, { useState } from "react";
-import ProductsTable from "../components/Table/ProductsTable";
+import ProductsTable from "../components/Table-Chart/ProductsTable";
 import useStockCall from "../hook/useStockCall";
 import { useEffect } from "react";
 import ProductModal from "../components/Modal/ProductModal";
@@ -23,9 +23,6 @@ const Products = () => {
   });
 
   useEffect(() => {
-    // getStockData("products");
-    // getStockData("brands");
-    // getStockData("categories");
     getProCatBrand()
 
   }, []);

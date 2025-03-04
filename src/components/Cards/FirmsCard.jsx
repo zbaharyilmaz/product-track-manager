@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import useStockCall from "../../hook/useStockCall";
-import { btnStyle } from "../../styles/globalStyles";
+import { btnStyle } from "../../styles/buttonStyles";
 
 export default function FirmsCard({
   _id,

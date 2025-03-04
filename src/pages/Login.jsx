@@ -1,27 +1,35 @@
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import LockIcon from "@mui/icons-material/Lock";
-import image from "../assets/hero.png";
-import { Link } from "react-router-dom";
-import AuthHeader from "../components/AuthHeader";
-import AuthImage from "../components/AuthImage";
+// Material UI imports
+import {
+  Avatar,
+  Box,
+  Button,
+  Container,
+  Grid,
+  Typography,
+} from "@mui/material";
+
+// Third party imports
 import { Formik } from "formik";
-import useAuthCall from "../hook/useAuthCall";
-import LoginForm from "../components/LoginForm";
+import { Link } from "react-router-dom";
+import { LoginOutlined } from "@ant-design/icons";
 import * as Yup from "yup";
+
+// Local imports
+import AuthHeader from "../components/AuthHeader";
+import LoginForm from "../components/LoginForm";
+import useAuthCall from "../hook/useAuthCall";
+
 const Login = () => {
   const { login } = useAuthCall();
 
   const SignupSchema = Yup.object().shape({
     username: Yup.string()
-      .min(5, "Kullanıcı adı 5 karakterden az olamaz")
-      .max(50, "Kullanıcı adı 50 karakterden fazla olamaz")
-      .required("Kullanıcı adı zorunludur"),
-    password: Yup.string().required("password zorunludur"),
+      .min(5, "Username cannot be less than 5 characters")
+      .max(50, "Username cannot be more than 50 characters")
+      .required("Username is required"),
+    password: Yup.string().required("Password is required"),
   });
+
   return (
     <Container maxWidth="lg">
       <Grid
@@ -33,21 +41,23 @@ const Login = () => {
           p: 2,
         }}
       >
-        <AuthHeader />
-
+ 
+     
         <Grid item xs={12} sm={10} md={6}>
+        <AuthHeader /> 
+        <Typography variant="h5" align="center" m={3} color="primary.main">Track. Stock. Optimize. Sell. Grow.</Typography> 
           <Avatar
             sx={{
               backgroundColor: "secondary.main",
               m: "auto",
-              width: 40,
-              height: 40,
+              width: 50,
+              height: 50,
             }}
           >
-            <LockIcon size="30" />
+            <LoginOutlined style={{ fontSize: "30px" }} />
           </Avatar>
-          <Typography variant="h4" align="center" mb={4} color="secondary.main">
-            SIGN IN
+          <Typography variant="h4" align="center" m={3} color="secondary.main">
+            Login
           </Typography>
 
           <Formik
@@ -62,12 +72,12 @@ const Login = () => {
             component={(props) => <LoginForm {...props} />}
           />
 
-          <Box sx={{ textAlign: "center", mt: 2, color: "secondary.main" }}>
-            <Link to="/register">Don't have an account? Sign Up</Link>
+          <Box
+            sx={{ textAlign: "center", mt: 3, color: "customColors.color2" }}
+          >
+            <Link to="/register">New here? Create an account!</Link>
           </Box>
         </Grid>
-
-        <AuthImage image={image} />
       </Grid>
     </Container>
   );

@@ -1,26 +1,19 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
-import MenuIcon from "@mui/icons-material/Menu";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
+import { Outlet, useNavigate } from "react-router-dom";
+import {
+  AppBar,
+  Box,
+  Button,
+  CssBaseline,
+  Drawer,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { Menu as MenuIcon, Logout as LogoutIcon } from "@mui/icons-material";
+
 import useAuthCall from "../hook/useAuthCall";
-import { useNavigate } from "react-router-dom";
-import { Outlet } from "react-router-dom";
-import LogoutIcon from "@mui/icons-material/Logout";
-import MenuListItems from "./../components/MuiListItems";
+import MenuListItems from "../components/MenuListItems";
 
 const drawerWidth = 240;
 
@@ -46,62 +39,6 @@ function ResponsiveDrawer(props) {
     }
   };
 
-  const links = [
-    {
-      title: "Dashboard",
-      url: "",
-      icon: "public/assets/navbar/ic_analytics.svg",
-    },
-    { title: "Firms", url: "firms", icon: "public/assets/navbar/firms.svg" },
-    {
-      title: "Products",
-      url: "products",
-      icon: "public/assets/navbar/ic_cart.svg",
-    },
-    {
-      title: "Purchases",
-      url: "purchases",
-      icon: "public/assets/navbar/purchase.svg",
-    },
-    { title: "Sales", url: "sales", icon: "public/assets/navbar/sales.svg" },
-    { title: "Brands", url: "brands", icon: "public/assets/navbar/brand.svg" },
-  ];
-
-  const drawer = (
-    <div>
-      <Toolbar />
-      <List>
-        {links.map((text, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton
-              onClick={() => navigate(`${text.url}`)}
-              sx={{
-                color: "secondary.main",
-                borderRadius: "1rem",
-                transition: "all 0.7s ease-in-out ",
-                "&:hover": {
-                  backgroundColor: "secondary.second",
-                  color: "white",
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  width: 24,
-                  height: 24,
-                  mask: `url(${text.icon}) no-repeat center`,
-                  backgroundColor: "currentColor",
-                  mr: 2,
-                }}
-              ></Box>
-              <ListItemText primary={text.title} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
-
   // Remove this const when copying and pasting into your project.
   const container =
     window !== undefined ? () => window().document.body : undefined;
@@ -114,12 +51,13 @@ function ResponsiveDrawer(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          backgroundColor: "white",
-          color: "secondary.main",
-          borderRadius: "10px",
+          height: "90px",
+          boxShadow: "0 0 10px 0 rgba(0,0,0,0.5)",
+          bgcolor: "customColors.color2",
+          color: "white",
         }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between"}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -129,24 +67,25 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Stock App
+          <Typography variant="h4" noWrap component="div" mt={3} >
+            PRODUCT TRACK MANAGER 
           </Typography>
           <Button
             color="inherit"
             onClick={logout}
             sx={{
+              mt: 3,
               "&:hover": {
-                backgroundColor: "secondary.second",
+                backgroundColor: "customColors.color5",
                 color: "white",
                 "& .MuiSvgIcon-root": {
-                  color: "red",
+                  color: "white",
                 },
               },
             }}
           >
             Logout
-            <LogoutIcon />
+            <LogoutIcon sx={{m:1}} />
           </Button>
         </Toolbar>
       </AppBar>
@@ -173,7 +112,6 @@ function ResponsiveDrawer(props) {
             },
           }}
         >
-          {/* {drawer} */}
           <MenuListItems />
         </Drawer>
         <Drawer
@@ -187,7 +125,6 @@ function ResponsiveDrawer(props) {
           }}
           open
         >
-          {/* {drawer} */}
           <MenuListItems />
         </Drawer>
       </Box>
@@ -200,8 +137,6 @@ function ResponsiveDrawer(props) {
         }}
       >
         <Toolbar />
-
-        {/* Buraya içerik gelecek */}
         <Outlet />
       </Box>
     </Box>
@@ -209,3 +144,5 @@ function ResponsiveDrawer(props) {
 }
 
 export default ResponsiveDrawer;
+
+

@@ -1,15 +1,16 @@
 import React from "react";
 import { Box, Button, TextField } from "@mui/material";
 const RegisterForm = ({
-    values,
-    errors,
-    touched,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-  }) => {
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleBlur,
+  handleSubmit,
+}) => {
   return (
     <form onSubmit={handleSubmit}>
+           <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width:"75%", margin:"auto"}}>
       <TextField
         name="username"
         label="Username"
@@ -18,8 +19,8 @@ const RegisterForm = ({
         value={values.username}
         onChange={handleChange}
         error={touched.username && errors.username}
-        helperText={touched.username && errors.username} 
-        onBlur={handleBlur} 
+        helperText={touched.username && errors.username}
+        onBlur={handleBlur}
         margin="normal"
       />
       <TextField
@@ -30,8 +31,8 @@ const RegisterForm = ({
         value={values.firstName}
         onChange={handleChange}
         error={touched.firstName && errors.firstName}
-        helperText={touched.firstName && errors.firstName} 
-        onBlur={handleBlur} 
+        helperText={touched.firstName && errors.firstName}
+        onBlur={handleBlur}
         margin="normal"
       />
       <TextField
@@ -42,19 +43,19 @@ const RegisterForm = ({
         value={values.lastName}
         onChange={handleChange}
         error={touched.lastName && errors.lastName}
-        helperText={touched.lastName && errors.lastName} 
-        onBlur={handleBlur} 
+        helperText={touched.lastName && errors.lastName}
+        onBlur={handleBlur}
         margin="normal"
       />
       <TextField
         name="email"
-        label="EMail"
+        label="Email"
         variant="outlined"
         fullWidth
         value={values.email}
         onChange={handleChange}
         error={touched.email && errors.email}
-        helperText={touched.email && errors.email} 
+        helperText={touched.email && errors.email}
         onBlur={handleBlur}
         margin="normal"
         type="email"
@@ -67,14 +68,27 @@ const RegisterForm = ({
         value={values.password}
         onChange={handleChange}
         error={touched.password && errors.password}
-        helperText={touched.password && errors.password} 
-        onBlur={handleBlur} 
+        helperText={touched.password && errors.password}
+        onBlur={handleBlur}
         margin="normal"
         type="password"
       />
-      <Button variant="contained" fullWidth type="submit">
+      <Button
+        variant="text"
+        sx={{
+          textAlign: "center",
+          margin: 2,
+          width: "15%",
+          display: "block",
+          mx: "auto",
+          border:"1px solid",
+          color:"secondary.main"
+        }}
+        type="submit"
+      >
         SUBMIT
       </Button>
+      </Box>
     </form>
   );
 };

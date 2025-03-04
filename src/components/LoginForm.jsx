@@ -8,12 +8,12 @@ import { object, string } from "yup";
 
 
 const LoginForm = ({ values, handleChange, errors, touched, handleBlur,handleSubmit }) => {
-  const { loading } = useSelector(state => state.auth);// storeda yaptığımız fetchStart işlemini kullanmış olduk.
+  const { loading } = useSelector(state => state.auth)
   return (
     <Form onSubmit={handleSubmit}>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width:"75%", margin:"auto"}}>
         <TextField
-          label="username"
+          label="Username"
           name="username"
           id="username"
           type="text"
@@ -25,7 +25,7 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur,handleSub
           error={touched.username && Boolean(errors.username)}
         />
         <TextField
-          label="password"
+          label="Password"
           name="password"
           id="password"
           type="password"
@@ -37,22 +37,14 @@ const LoginForm = ({ values, handleChange, errors, touched, handleBlur,handleSub
           error={touched.password && Boolean(errors.password)}
         />
         {!loading ? (
-          <Button variant="contained" type="submit">
-           Sign In
+          <Button variant="text" sx={{width:"15%",color:"secondary.main",border:"1px solid",margin:2, textAlign:"center",mx:"auto"}} type="submit">
+          Login
           </Button>
         ) : (
-          <Button variant="contained" disabled={loading}>
-            <CircularProgress />
+          <Button variant="contained" disabled={loading}> 
+            <CircularProgress sx={{ color: "customColors.color3" }}/>
           </Button>
         )}
-
-        {/* <Button
-          variant="contained"
-          type="submit"
-          disabled={loading}
-          startIcon={loading && <CircularProgress />}>
-          Submit
-        </Button> */}
       </Box>
     </Form>
   );

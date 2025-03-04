@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { btnStyle } from "../../styles/globalStyles";
+import { btnStyle } from "../../styles/buttonStyles";
 import useStockCall from "../../hook/useStockCall";
 
 

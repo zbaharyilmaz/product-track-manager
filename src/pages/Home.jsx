@@ -1,8 +1,8 @@
 import React from 'react'
-import KpiCard from '../components/KpiCard'
 import useStockCall from "../hook/useStockCall"
 import { useEffect } from 'react'
-import { Charts } from '../components/Charts'
+import KpiCard from '../components/Cards/KpiCard'
+import {Charts} from '../components/Table-Chart/Charts'
 
 
 const Home = () => {

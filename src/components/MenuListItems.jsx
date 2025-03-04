@@ -1,67 +1,58 @@
 import React from "react";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
-import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
-import { btnStyle, selectedStyle } from "../styles/globalStyles";
+import { btnStyle, selectedStyle } from "../styles/buttonStyles";
 
 const icon = (name) => `/assets/navbar/${name}.svg`;
 
 const links = [
   {
-    title: "Dashboard",
+    title: "DASHBOARD",
     url: "/stock",
-    icon: icon("ic_analytics"),
+    icon: icon("dashboard"),
   },
   {
-    title: "Firms",
+    title: "FIRMS",
     url: "/stock/firms",
     icon: icon("firms"),
   },
   {
-    title: "Brands",
+    title: "BRANDS",
     url: "/stock/brands",
-    icon: icon("brand"),
+    icon: icon("brands"),
   },
   {
-    title: "Purchases",
+    title: "PURCHASES",
     url: "/stock/purchases",
-    icon: icon("purchase"),
+    icon: icon("purchases"),
   },
   {
-    title: "Sales",
+    title: "SALES",
     url: "/stock/sales",
     icon: icon("sales"),
   },
   {
-    title: "Products",
+    title: "PRODUCTS",
     url: "/stock/products",
-    icon: icon("ic_cart"),
+    icon: icon("products"),
   },
 ];
 
 const MenuListItems = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  // const {pathname} = useLocation()
   console.log(location);
   return (
-    <div>
+    <Box sx={{ bgcolor: "customColors.color2", height: "100vh" , color:"white"}}>
       <Toolbar />
-      {/* <Divider /> */}
-      <List>
+      <List >
         {links.map((item, index) => (
-          <ListItem key={item.title} disablePadding>
+          <ListItem key={item.title} >
             <ListItemButton
               onClick={() => navigate(item.url)}
               sx={item.url === location.pathname ? selectedStyle : btnStyle}
@@ -70,9 +61,9 @@ const MenuListItems = () => {
                 sx={{
                   width: "24px",
                   height: "24px",
-                  mr: 2,
+                  mr: 3,
                   mask: `url(${item.icon}) no-repeat center / contain `,
-                  bgcolor: "currentcolor",
+                  bgcolor: "white",
                 }}
               />
               <ListItemText primary={item.title} />
@@ -80,8 +71,9 @@ const MenuListItems = () => {
           </ListItem>
         ))}
       </List>
-    </div>
+    </Box>
   );
 };
 
 export default MenuListItems;
+
