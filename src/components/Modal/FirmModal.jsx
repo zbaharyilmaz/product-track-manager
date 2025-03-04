@@ -29,8 +29,6 @@ export default function FirmModal({ open, handleClose, initialState }) {
     image: "",
   });
   const handleChange = (e) => {
-    console.log(e.target.value);
-    console.log(e.target.name);
     // {[e.target.name]:e.target.value}
     setInfo({ ...info, [e.target.name]: e.target.value });
   };

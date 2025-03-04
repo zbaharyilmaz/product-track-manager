@@ -1,23 +1,25 @@
-import React from 'react'
-import useStockCall from "../hook/useStockCall"
-import { useEffect } from 'react'
-import KpiCard from '../components/Cards/KpiCard'
-import {Charts} from '../components/Table-Chart/Charts'
-
+import React, { useEffect } from "react";
+import useStockCall from "../hook/useStockCall";
+import { Charts } from "../components/Table-Chart/Charts";
+import { Container, Typography } from "@mui/material";
+import KCard from "../components/Cards/KCard";
 
 const Home = () => {
-  const {getStockData}=useStockCall()
-  useEffect(()=>{
-    getStockData("sales")
-    getStockData("purchases")
-  },[])
+  const { getStockData } = useStockCall();
+  useEffect(() => {
+    getStockData("sales");
+    getStockData("purchases");
+  }, []);
 
   return (
-    <div>
-    <KpiCard/>
-    <Charts/>
-    </div>
-  )
-}
+    <Container>
+      <Typography variant="h4" color="primary.main" gutterBottom mt={5}>
+        LATEST METRICS
+      </Typography>
+      <KCard />
+      <Charts />
+    </Container>
+  );
+};
 
-export default Home
+export default Home;

@@ -23,7 +23,6 @@ const stockSlice = createSlice({
       state.error = true;
     },
     stockSuccess: (state, { payload }) => {
-      console.log("Payload", payload);
       state[payload.url] = payload.data.data;
       state.loading = false;
       state.error = false;
@@ -43,7 +42,6 @@ const stockSlice = createSlice({
     },
     getSalesBrandProSuccess:(state, { payload }) => {
       state.loading=false
-      console.log("payload sales", payload);
       state.sales=payload[0]
       state.brands=payload[1]
       state.products=payload[2]

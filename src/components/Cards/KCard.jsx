@@ -1,6 +1,4 @@
 // 'use client';
-
-import { textAlign } from "@mui/system";
 import { Card } from "@tremor/react";
 import { useSelector } from "react-redux";
 
@@ -8,7 +6,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function KpiCard() {
+export default function KCard() {
   const { sales, purchases } = useSelector((state) => state.stock);
 
   const totalSales = sales.reduce((acc, sale) => acc + sale.amount, 0);
@@ -66,8 +64,8 @@ export default function KpiCard() {
                 <span
                   className={classNames(
                     item.changeType === "positive"
-                      ? "text-emerald-700 dark:text-emerald-500"
-                      : "text-gray-700 dark:text-gray-500",
+                      ? "text-emerald dark:text-emerald"
+                      : "text-gray dark:text-gray",
                     "text-tremor-default font-medium"
                   )}
                 >

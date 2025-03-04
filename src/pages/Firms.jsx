@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import useStockCall from "../hook/useStockCall";
 import { Button, Container, Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
@@ -23,25 +22,33 @@ const Firms = () => {
   });
   return (
     <Container>
-      <Typography
-        variant="h4"
-        color="customColors.color1"
-        align="center"
-        gutterBottom
-      >
-        Firms
+      <Typography variant="h4" color="primary.main" gutterBottom mt={5}>
+        FIRMS
       </Typography>
-      <Button variant="contained" onClick={handleOpen}>
-        NEW FIRM
+      <Button
+        variant="contained"
+        onClick={handleOpen}
+        mt={2}
+        sx={{ bgcolor: "customColors.color2" }}
+      >
+        ADD FIRM
       </Button>
       <Grid container spacing={2} mt={2}>
         {firms.map((firm, index) => (
           <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={index}>
-            <FirmsCard {...firm} setInitialState={setInitialState} handleOpen={handleOpen} />
+            <FirmsCard
+              {...firm}
+              setInitialState={setInitialState}
+              handleOpen={handleOpen}
+            />
           </Grid>
         ))}
       </Grid>
-      <FirmModal open={open} handleClose={handleClose} initialState={initialState} />
+      <FirmModal
+        open={open}
+        handleClose={handleClose}
+        initialState={initialState}
+      />
     </Container>
   );
 };

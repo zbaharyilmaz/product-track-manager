@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import { Box, Button, TextField } from "@mui/material";
+import { Box} from "@mui/material";
 import AuthHeader from "../components/AuthHeader";
 import { UserAddOutlined } from "@ant-design/icons";
 import { Formik } from "formik";
@@ -82,7 +82,6 @@ const Register = () => {
             }}
             validationSchema={SignupSchema}
             onSubmit={(values) => {
-              console.log(values);
               register(values);
             }}
             component={(props) => <RegisterForm {...props} />}

@@ -5,10 +5,9 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import useStockCall from "../../hook/useStockCall";
-import { btnStyle } from "../../styles/buttonStyles";
 
 export default function FirmsCard({
   _id,
@@ -17,7 +16,7 @@ export default function FirmsCard({
   phone,
   address,
   handleOpen,
-  setInitialState
+  setInitialState,
 }) {
   const { deleteStockData } = useStockCall();
 
@@ -30,6 +29,10 @@ export default function FirmsCard({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        borderColor: "secondary.second",
+        borderWidth: 1,
+        borderStyle: "solid",
+        boxShadow: 3,
       }}
     >
       <CardHeader
@@ -42,7 +45,7 @@ export default function FirmsCard({
       />
       <CardMedia
         component="img"
-        sx={{ height: 200, objectFit: "contain" }}
+        sx={{ height: 180, objectFit: "contain" }}
         image={image}
         alt=""
       />
@@ -52,12 +55,28 @@ export default function FirmsCard({
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <DeleteForeverIcon
-          sx={btnStyle}
+        <DeleteIcon
+          sx={{
+            color: "primary.main",
+            cursor: "pointer",
+            fontSize: "1.5rem",
+            "&:hover": {
+              color: "customColors.color3",
+              transform: "scale(1.1)",
+            },
+          }}
           onClick={() => deleteStockData("firms", _id)}
         />
         <EditIcon
-          sx={btnStyle}
+          sx={{
+            color: "primary.main",
+            cursor: "pointer",
+            fontSize: "1.5rem",
+            "&:hover": {
+              color: "customColors.color5",
+              transform: "scale(1.1)",
+            },
+          }}
           onClick={() => {
             setInitialState({ _id, name, image, phone, address });
             handleOpen();

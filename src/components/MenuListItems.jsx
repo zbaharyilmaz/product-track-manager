@@ -46,7 +46,6 @@ const links = [
 const MenuListItems = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
   return (
     <Box sx={{ bgcolor: "customColors.color2", height: "100vh" , color:"white"}}>
       <Toolbar />

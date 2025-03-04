@@ -1,20 +1,8 @@
-// Material UI imports
-import {
-  Avatar,
-  Box,
-  Button,
-  Container,
-  Grid,
-  Typography,
-} from "@mui/material";
-
-// Third party imports
+import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
 import { LoginOutlined } from "@ant-design/icons";
 import * as Yup from "yup";
-
-// Local imports
 import AuthHeader from "../components/AuthHeader";
 import LoginForm from "../components/LoginForm";
 import useAuthCall from "../hook/useAuthCall";
@@ -41,11 +29,11 @@ const Login = () => {
           p: 2,
         }}
       >
- 
-     
         <Grid item xs={12} sm={10} md={6}>
-        <AuthHeader /> 
-        <Typography variant="h5" align="center" m={3} color="primary.main">Track. Stock. Optimize. Sell. Grow.</Typography> 
+          <AuthHeader />
+          <Typography variant="h5" align="center" m={3} color="primary.main">
+            Track. Stock. Optimize. Sell. Grow.
+          </Typography>
           <Avatar
             sx={{
               backgroundColor: "secondary.main",
@@ -65,7 +53,6 @@ const Login = () => {
             validationSchema={SignupSchema}
             onSubmit={(values, actions) => {
               login(values);
-              console.log(values, "loginiçinde");
               actions.resetForm();
               actions.setSubmitting(false);
             }}

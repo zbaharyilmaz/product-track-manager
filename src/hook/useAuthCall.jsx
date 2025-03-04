@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch } from "react-redux";
 import {
   fetchFail,
@@ -24,7 +23,6 @@ const useAuthCall = () => {
         `${BASE_URL}users/`,
         userInfo
       );
-      console.log(data);
 
       dispatch(registerSuccess(data));
       navigate("/stock");
@@ -59,7 +57,6 @@ const useAuthCall = () => {
         `${BASE_URL}auth/login/`,
         userInfo
       );
-      console.log("Loginde data",data)
       dispatch(loginSuccess(data))
       navigate("/stock")
     } catch (error) {

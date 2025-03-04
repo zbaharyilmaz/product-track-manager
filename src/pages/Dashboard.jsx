@@ -57,7 +57,7 @@ function ResponsiveDrawer(props) {
           color: "white",
         }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between"}}>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -67,8 +67,8 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h4" noWrap component="div" mt={3} >
-            PRODUCT TRACK MANAGER 
+          <Typography variant="h4" noWrap component="div" mt={3}>
+            PRODUCT TRACK MANAGER
           </Typography>
           <Button
             color="inherit"
@@ -85,7 +85,7 @@ function ResponsiveDrawer(props) {
             }}
           >
             Logout
-            <LogoutIcon sx={{m:1}} />
+            <LogoutIcon sx={{ m: 1 }} />
           </Button>
         </Toolbar>
       </AppBar>
@@ -144,5 +144,3 @@ function ResponsiveDrawer(props) {
 }
 
 export default ResponsiveDrawer;
-
-

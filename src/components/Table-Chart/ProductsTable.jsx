@@ -4,7 +4,6 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
 import DeleteIcon from "@mui/icons-material/Delete";
 import useStockCall from "../../hook/useStockCall";
-import { display, textAlign } from "@mui/system";
 
 const rows = [];
 
@@ -14,20 +13,12 @@ export default function ProductsTable() {
   };
   const { deleteStockData } = useStockCall((state) => state.stock);
   const { products } = useSelector((state) => state.stock);
-  console.log(products);
 
   const columns = [
     { field: "_id", headerName: "ID", width: 200 },
     {
       field: "categoryId",
       headerName: "Category",
-      width: 150,
-      editable: true,
-      valueGetter: (value) => value.name,
-    },
-    {
-      field: "brandId",
-      headerName: "Brand",
       width: 150,
       editable: true,
       valueGetter: (value) => value.name,
@@ -51,8 +42,8 @@ export default function ProductsTable() {
       description: "This column has a value getter and is not sortable.",
       sortable: false,
       width: 160,
-      headerAlign:"center",
-      align:"center",
+      headerAlign: "center",
+      align: "center",
       renderCell: (params) => (
         <DeleteIcon onClick={() => deleteStockData("products", params.id)} />
       ),
@@ -60,7 +51,7 @@ export default function ProductsTable() {
   ];
 
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box sx={{ height: 500, width: "90%"  }}>
       <DataGrid
         getRowId={getRowId}
         rows={products}
@@ -72,7 +63,7 @@ export default function ProductsTable() {
             },
           },
         }}
-        pageSizeOptions={[5,10,15,20]}
+        pageSizeOptions={[5, 10, 15, 20]}
         checkboxSelection
         disableRowSelectionOnClick
         slots={{ toolbar: GridToolbar }}

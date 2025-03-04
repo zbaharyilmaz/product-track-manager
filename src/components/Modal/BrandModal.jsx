@@ -30,8 +30,6 @@ export default function BrandModal({ open, handleClose ,initialState }) {
   });
 
   const handleChange = (e) => {
-    console.log(e.target.name);
-    console.log(e.target.value);
     //    {[e.target.name]:e.target.value}
     setInfo({ ...info, [e.target.name]: e.target.value });
   };
@@ -48,8 +46,6 @@ export default function BrandModal({ open, handleClose ,initialState }) {
   };
 
   useEffect(()=>{setInfo(initialState)},[initialState])
-
-  console.log(info);
   return (
     <div>
       <Modal

@@ -1,8 +1,11 @@
-import React from "react";
 import { useDispatch } from "react-redux";
-import { fetchFail, fetchStart, stockSuccess,getProCatBrandSuccess } from "../features/stockSlice";
+import {
+  fetchFail,
+  fetchStart,
+  stockSuccess,
+  getProCatBrandSuccess,
+} from "../features/stockSlice";
 import useAxios from "./useAxios";
-import { useSelector } from "react-redux";
 
 const useStockCall = () => {
   const dispatch = useDispatch();
@@ -12,7 +15,6 @@ const useStockCall = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosWithToken.get(url);
-      console.log(data);
       dispatch(stockSuccess({ url, data }));
     } catch (error) {
       dispatch(fetchFail());
@@ -70,15 +72,11 @@ const useStockCall = () => {
       dispatch(fetchFail());
     }
   };
-
-  /* -------------------------------------------------------------------------- */
   const getPurcBrandPro = async () => {
     dispatch(fetchStart());
 
     try {
-      // const [a,b,c]=[2,4,6]  => Array destructure
-
-      const [purchases, brands, products,firms] = await Promise.all([
+      const [purchases, brands, products, firms] = await Promise.all([
         axiosWithToken("purchases"),
         axiosWithToken("brands"),
         axiosWithToken("products"),
@@ -97,7 +95,6 @@ const useStockCall = () => {
       dispatch(fetchFail());
     }
   };
-  /* -------------------------------------------------------------------------- */
   const getSalesBrandPro = async () => {
     dispatch(fetchStart());
 
@@ -109,7 +106,11 @@ const useStockCall = () => {
       ]);
 
       dispatch(
-        getSalesBrandProSuccess([sales?.data?.data, brands?.data?.data, products?.data?.data])
+        getSalesBrandProSuccess([
+          sales?.data?.data,
+          brands?.data?.data,
+          products?.data?.data,
+        ])
       );
     } catch (error) {
       dispatch(fetchFail());

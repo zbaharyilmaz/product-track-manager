@@ -1,15 +1,12 @@
-import { Typography } from "@mui/material";
-import { Button } from "@mui/material";
-import { Container } from "@mui/material";
-import React, { useState } from "react";
+import { Typography, Container, Button,Box } from "@mui/material";
+import React, { useState, useEffect } from "react";
 import ProductsTable from "../components/Table-Chart/ProductsTable";
 import useStockCall from "../hook/useStockCall";
-import { useEffect } from "react";
 import ProductModal from "../components/Modal/ProductModal";
 import { useSelector } from "react-redux";
 
 const Products = () => {
-  const { getStockData ,getProCatBrand} = useStockCall();
+  const { getStockData, getProCatBrand } = useStockCall();
   const { loading, error } = useSelector((state) => state.stock);
 
   const [open, setOpen] = useState(false);
@@ -23,19 +20,13 @@ const Products = () => {
   });
 
   useEffect(() => {
-    getProCatBrand()
-
+    getProCatBrand();
   }, []);
 
   return (
-    <Container maxWidth={"xl"}>
-      <Typography
-        align="center"
-        variant="h4"
-        component="h1"
-        color="secondary.second"
-      >
-        Products
+    <Container>
+      <Typography variant="h4" color="primary.main" gutterBottom mt={5}>
+        PRODUCTS
       </Typography>
       {loading ? (
         <Typography
@@ -55,13 +46,14 @@ const Products = () => {
           <Button
             variant="contained"
             onClick={handleOpen}
-            sx={{ marginBottom: "1rem" }}
+            mt={2}
+            sx={{ bgcolor: "customColors.color2" }}
           >
-            New Product
+            ADD PRODUCT
           </Button>
-
-          <ProductsTable />
-
+          <Box sx={{ mt: 3 }}>
+          <ProductsTable />  
+          </Box>
           {open && (
             <ProductModal
               open={open}
