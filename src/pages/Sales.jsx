@@ -1,7 +1,7 @@
 import { Button, Container, Typography } from "@mui/material";
 import React, { useState } from "react";
 import useStockCall from "../hook/useStockCall";
-import SalesTable from "../components/Table-Chart/SalesTable"
+import SalesTable from "../components/TableAndChart/SalesTable"
 import SalesModal from "../components/Modal/SalesModal";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import useStockCall from "../hook/useStockCall";
-import { Charts } from "../components/Table-Chart/Charts";
+import { Charts } from "../components/TableAndChart/Charts";
 import { Container, Typography } from "@mui/material";
 import KCard from "../components/Cards/KCard";
 

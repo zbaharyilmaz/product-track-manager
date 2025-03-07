@@ -1,6 +1,6 @@
 import { Typography, Container, Button,Box } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import ProductsTable from "../components/Table-Chart/ProductsTable";
+import ProductsTable from "../components/TableAndChart/ProductsTable";
 import useStockCall from "../hook/useStockCall";
 import ProductModal from "../components/Modal/ProductModal";
 import { useSelector } from "react-redux";
