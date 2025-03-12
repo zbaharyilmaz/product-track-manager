@@ -14,7 +14,7 @@ import { Menu as MenuIcon, Logout as LogoutIcon } from "@mui/icons-material";
 
 import useAuthCall from "../hook/useAuthCall";
 import MenuListItems from "../components/MenuListItems";
-import SwitchButton from "../components/SwitchButton";
+
 
 const drawerWidth = 240;
 
