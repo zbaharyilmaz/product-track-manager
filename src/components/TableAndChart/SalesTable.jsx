@@ -85,21 +85,35 @@ const SalesTable = ({ handleOpen, setInitialState }) => {
               setInitialState &&
                 setInitialState({ brandId, price, quantity, productId, _id });
             }}
-            sx={btnStyle}
+               sx={{
+            color: "primary.main",
+            cursor: "pointer",
+            fontSize: "1.5rem",
+            "&:hover": {
+              color: "customColors.color3",
+              transform: "scale(1.1)",
+            },
+          }}
           />,
           <GridActionsCellItem
             key={"delete"}
             icon={<DeleteIcon />}
             label="Delete"
             onClick={() => deleteStockData("sales", _id)}
-            sx={btnStyle}
+               sx={{
+            color: "primary.main",
+            cursor: "pointer",
+            fontSize: "1.5rem",
+            "&:hover": {
+              color: "customColors.color3",
+              transform: "scale(1.1)",
+            },
+          }}
           />,
         ];
       },
     },
   ];
-
-  console.log(sales);
   return (
     <Box sx={{ width: "100%", marginTop: "1rem" }}>
       <DataGrid

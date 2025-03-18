@@ -40,10 +40,8 @@ export default function ProductModal({ handleClose, open ,initialState}) {
     const handleSubmit = (e) => {
       e.preventDefault();
       if (info._id) {
-        //* id varsa edit işlemi
         updateStockData("products", info);
       } else {
-        //* id yoksa create işlemi
         createStockData("products", info);
       }
       handleClose();

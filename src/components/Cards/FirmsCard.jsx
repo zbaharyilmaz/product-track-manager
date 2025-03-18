@@ -56,7 +56,7 @@ export default function FirmsCard({
       </CardContent>
       <CardActions disableSpacing>
         <DeleteIcon
-          sx={{
+           sx={{
             color: "primary.main",
             cursor: "pointer",
             fontSize: "1.5rem",

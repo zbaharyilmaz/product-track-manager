@@ -83,14 +83,30 @@ const PurchasesTable = ({ handleOpen, setInitialState }) => {
               handleOpen();
               setInitialState({ brandId, price, quantity, productId, _id });
             }}
-            sx={btnStyle}
+            sx={{
+              color: "primary.main",
+              cursor: "pointer",
+              fontSize: "1.5rem",
+              "&:hover": {
+                color: "customColors.color3",
+                transform: "scale(1.1)",
+              },
+            }}
           />,
           <GridActionsCellItem
             key={"delete"}
             icon={<DeleteIcon />}
             label="Delete"
             onClick={() => deleteStockData("purchases", _id)}
-            sx={btnStyle}
+            sx={{
+              color: "primary.main",
+              cursor: "pointer",
+              fontSize: "1.5rem",
+              "&:hover": {
+                color: "customColors.color3",
+                transform: "scale(1.1)",
+              },
+            }}
           />,
         ];
       },

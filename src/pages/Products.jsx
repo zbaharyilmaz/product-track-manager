@@ -35,14 +35,13 @@ const Products = () => {
       {loading ? (
         <Typography
           align="center"
-          variant="h5"
-          component="h3"
-          color="secondary.second"
+          variant="h4"
+          color="secondary.main"
         >
           Loading....
         </Typography>
       ) : error ? (
-        <Typography align="center" variant="h5" component="h3" color="error">
+        <Typography align="center" variant="h4" color="secondary.main">
           Something went wrong...
         </Typography>
       ) : (

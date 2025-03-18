@@ -88,7 +88,7 @@ const Register = () => {
           />
 
           <Box sx={{ textAlign: "center", mt: 3, mb: 4 }}>
-            <Link to="/">New here? Create an account!</Link>
+            <Link to="/">Do you have an account? Login</Link>
           </Box>
         </Grid>
       </Grid>
