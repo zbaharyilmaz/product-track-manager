@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -10,9 +9,9 @@ import useStockCall from "../../hook/useStockCall";
 function getRowId(row) {
   return row._id;
 }
-const SalesTable = ({ handleOpen, setInitialState }) => {
+const PurchasesTable = ({ handleOpen, setInitialState }) => {
   const { deleteStockData } = useStockCall();
-  const { sales } = useSelector((state) => state.stock);
+  const { purchases } = useSelector((state) => state.stock);
   const columns = [
     {
       field: "createdAt",
@@ -82,8 +81,7 @@ const SalesTable = ({ handleOpen, setInitialState }) => {
             label="Edit"
             onClick={() => {
               handleOpen();
-              setInitialState &&
-                setInitialState({ brandId, price, quantity, productId, _id });
+              setInitialState({ brandId, price, quantity, productId, _id });
             }}
             sx={btnStyle}
           />,
@@ -91,7 +89,7 @@ const SalesTable = ({ handleOpen, setInitialState }) => {
             key={"delete"}
             icon={<DeleteIcon />}
             label="Delete"
-            onClick={() => deleteStockData("sales", _id)}
+            onClick={() => deleteStockData("purchases", _id)}
             sx={btnStyle}
           />,
         ];
@@ -99,11 +97,10 @@ const SalesTable = ({ handleOpen, setInitialState }) => {
     },
   ];
 
-  console.log(sales);
   return (
     <Box sx={{ width: "100%", marginTop: "1rem" }}>
       <DataGrid
-        rows={sales}
+        rows={purchases}
         columns={columns}
         initialState={{
           pagination: {
@@ -123,4 +120,5 @@ const SalesTable = ({ handleOpen, setInitialState }) => {
     </Box>
   );
 };
-export default SalesTable;
+
+export default PurchasesTable;

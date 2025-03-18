@@ -1,4 +1,4 @@
-import { Typography, Container, Button,Box } from "@mui/material";
+import { Typography, Container, Button, Box } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import ProductsTable from "../components/TableAndChart/ProductsTable";
 import useStockCall from "../hook/useStockCall";
@@ -21,6 +21,10 @@ const Products = () => {
 
   useEffect(() => {
     getProCatBrand();
+
+    return () => {
+      setOpen(false);
+    };
   }, []);
 
   return (
@@ -52,7 +56,7 @@ const Products = () => {
             ADD PRODUCT
           </Button>
           <Box sx={{ mt: 3 }}>
-          <ProductsTable />  
+            <ProductsTable />
           </Box>
           {open && (
             <ProductModal

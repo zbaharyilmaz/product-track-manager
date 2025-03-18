@@ -4,7 +4,10 @@ import {
   fetchStart,
   stockSuccess,
   getProCatBrandSuccess,
+  getPurcBrandProSuccess,
+  getSalesBrandProSuccess,
 } from "../features/stockSlice";
+
 import useAxios from "./useAxios";
 
 const useStockCall = () => {
