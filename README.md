@@ -47,60 +47,60 @@ Product Track Manager is a modern web application for managing product data, sal
 
 ### Project Structure
 ```plaintext
-📦src
- ┣ 📂app
- ┃ ┗ 📜store.jsx
- ┣ 📂components
- ┃ ┣ 📂Cards
- ┃ ┃ ┣ 📜BrandsCard.jsx
- ┃ ┃ ┣ 📜FirmsCard.jsx
- ┃ ┃ ┗ 📜KCard.jsx
- ┃ ┣ 📂Modal
- ┃ ┃ ┣ 📜BrandModal.jsx
- ┃ ┃ ┣ 📜FirmModal.jsx
- ┃ ┃ ┣ 📜ProductModal.jsx
- ┃ ┃ ┣ 📜PurchasesModal.jsx
- ┃ ┃ ┗ 📜SalesModal.jsx
- ┃ ┣ 📂TableAndChart
- ┃ ┃ ┣ 📜Charts.jsx
- ┃ ┃ ┣ 📜ProductsTable.jsx
- ┃ ┃ ┣ 📜PurchasesTable.jsx
- ┃ ┃ ┗ 📜SalesTable.jsx
- ┃ ┣ 📜AuthHeader.jsx
- ┃ ┣ 📜ErrorBoundary.jsx
- ┃ ┣ 📜LoginForm.jsx
- ┃ ┣ 📜MenuListItems.jsx
- ┃ ┗ 📜RegisterForm.jsx
- ┣ 📂features
- ┃ ┣ 📜authSlice.jsx
- ┃ ┗ 📜stockSlice.jsx
- ┣ 📂helper
- ┃ ┗ 📜ToastNotify.js
- ┣ 📂hook
- ┃ ┣ 📜useAuthCall.jsx
- ┃ ┣ 📜useAxios.jsx
- ┃ ┗ 📜useStockCall.jsx
- ┣ 📂pages
- ┃ ┣ 📜Brands.jsx
- ┃ ┣ 📜Dashboard.jsx
- ┃ ┣ 📜Firms.jsx
- ┃ ┣ 📜Home.jsx
- ┃ ┣ 📜Login.jsx
- ┃ ┣ 📜Products.jsx
- ┃ ┣ 📜Purchases.jsx
- ┃ ┣ 📜Register.jsx
- ┃ ┗ 📜Sales.jsx
- ┣ 📂registerCall
- ┃ ┗ 📜registerCall.jsx
- ┣ 📂router
- ┃ ┣ 📜AppRouter.jsx
- ┃ ┗ 📜PrivateRouter.jsx
- ┣ 📂styles
- ┃ ┣ 📜buttonStyles.js
- ┃ ┗ 📜theme.js
- ┣ 📜App.jsx
- ┣ 📜_redirects
- ┗ 📜main.jsx
+  src
+ ┣ app
+ ┃ ┗ store.jsx
+ ┣ components
+ ┃ ┣ Cards
+ ┃ ┃ ┣ BrandsCard.jsx
+ ┃ ┃ ┣ FirmsCard.jsx
+ ┃ ┃ ┗ KCard.jsx
+ ┃ ┣ Modal
+ ┃ ┃ ┣ BrandModal.jsx
+ ┃ ┃ ┣ FirmModal.jsx
+ ┃ ┃ ┣ ProductModal.jsx
+ ┃ ┃ ┣ PurchasesModal.jsx
+ ┃ ┃ ┗ SalesModal.jsx
+ ┃ ┣ TableAndChart
+ ┃ ┃ ┣ Charts.jsx
+ ┃ ┃ ┣ ProductsTable.jsx
+ ┃ ┃ ┣ PurchasesTable.jsx
+ ┃ ┃ ┗ SalesTable.jsx
+ ┃ ┣ AuthHeader.jsx
+ ┃ ┣ ErrorBoundary.jsx
+ ┃ ┣ LoginForm.jsx
+ ┃ ┣ MenuListItems.jsx
+ ┃ ┗ RegisterForm.jsx
+ ┣ features
+ ┃ ┣ authSlice.jsx
+ ┃ ┗ stockSlice.jsx
+ ┣ helper
+ ┃ ┗ ToastNotify.js
+ ┣ hook
+ ┃ ┣ useAuthCall.jsx
+ ┃ ┣ useAxios.jsx
+ ┃ ┗ useStockCall.jsx
+ ┣ pages
+ ┃ ┣ Brands.jsx
+ ┃ ┣ Dashboard.jsx
+ ┃ ┣ Firms.jsx
+ ┃ ┣ Home.jsx
+ ┃ ┣ Login.jsx
+ ┃ ┣ Products.jsx
+ ┃ ┣ Purchases.jsx
+ ┃ ┣ Register.jsx
+ ┃ ┗ Sales.jsx
+ ┣ registerCall
+ ┃ ┗ registerCall.jsx
+ ┣ router
+ ┃ ┣ AppRouter.jsx
+ ┃ ┗ PrivateRouter.jsx
+ ┣ styles
+ ┃ ┣ buttonStyles.js
+ ┃ ┗ theme.js
+ ┣ App.jsx
+ ┣ _redirects
+ ┗ main.jsx
 ```
 ### Installation & Setup 
 
