@@ -14,37 +14,31 @@ const PurchasesTable = ({ handleOpen, setInitialState }) => {
   const { purchases } = useSelector((state) => state.stock);
   const columns = [
     {
-      field: "createdAt",
+      field: "date",
       headerName: "Date",
       minWidth: 150,
       headerAlign: "center",
       align: "center",
-      valueGetter: (value) => {
-        return new Date(value).toLocaleString("de-DE");
+      valueGetter: (value, row) => {
+        return new Date(row.date || row.createdAt).toLocaleString("de-DE");
       },
     },
 
     {
-      field: "brandId",
+      field: "brand",
       headerName: "Brand",
       flex: 1,
       minWidth: 100,
       headerAlign: "center",
       align: "center",
-      valueGetter: (value) => {
-        return value?.name ?? "-No Brand-";
-      },
     },
     {
-      field: "productId",
+      field: "product",
       headerName: "Product",
       flex: 1,
       minWidth: 100,
       headerAlign: "center",
       align: "center",
-      valueGetter: (value) => {
-        return value?.name ?? "-No Product-";
-      },
     },
     {
       field: "quantity",

@@ -9,8 +9,14 @@ function classNames(...classes) {
 export default function KCard() {
   const { sales, purchases } = useSelector((state) => state.stock);
 
-  const totalSales = sales.reduce((acc, sale) => acc + sale.amount, 0);
-  const totalPurchases = purchases.reduce((acc, purc) => acc + purc.amount, 0);
+  const totalSales = sales.reduce(
+    (acc, sale) => acc + (sale.totalAmount || sale.amount || 0),
+    0
+  );
+  const totalPurchases = purchases.reduce(
+    (acc, purc) => acc + (purc.totalAmount || purc.amount || 0),
+    0
+  );
   const totalCash = totalSales - totalPurchases;
 
   const data = [

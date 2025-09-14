@@ -17,23 +17,47 @@ export default function ProductsTable() {
   const columns = [
     { field: "_id", headerName: "ID", width: 200 },
     {
-      field: "categoryId",
-      headerName: "Category",
-      width: 150,
-      editable: true,
-      valueGetter: (value) => value.name,
+      field: "image",
+      headerName: "Image",
+      width: 100,
+      renderCell: (params) => (
+        <img
+          src={params.value}
+          alt={params.row.name}
+          style={{ width: 50, height: 50, objectFit: "cover", borderRadius: 4 }}
+        />
+      ),
     },
     {
       field: "name",
       headerName: "Name",
-      width: 110,
+      width: 150,
       editable: true,
     },
     {
-      field: "quantity",
+      field: "category",
+      headerName: "Category",
+      width: 120,
+      editable: true,
+    },
+    {
+      field: "brand",
+      headerName: "Brand",
+      width: 120,
+      editable: true,
+    },
+    {
+      field: "stock",
       headerName: "Stock",
       type: "number",
-      width: 110,
+      width: 100,
+      editable: true,
+    },
+    {
+      field: "price",
+      headerName: "Price",
+      type: "number",
+      width: 100,
       editable: true,
     },
     {
@@ -51,7 +75,7 @@ export default function ProductsTable() {
   ];
 
   return (
-    <Box sx={{ height: 500, width: "90%"  }}>
+    <Box sx={{ height: 500, width: "90%" }}>
       <DataGrid
         getRowId={getRowId}
         rows={products}

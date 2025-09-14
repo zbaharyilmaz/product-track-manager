@@ -6,12 +6,12 @@ import { Grid } from "@mui/material";
 export const Charts = () => {
   const { sales, purchases } = useSelector((state) => state.stock);
   const salesData = sales.map((sale) => ({
-    date: new Date(sale.createdAt).toLocaleString(),
-    amount: sale.amount,
+    date: new Date(sale.date || sale.createdAt).toLocaleString(),
+    amount: sale.totalAmount || sale.amount || 0,
   }));
   const purchasesData = purchases.map((purchase) => ({
-    date: new Date(purchase.createdAt).toLocaleString(),
-    amount: purchase.amount,
+    date: new Date(purchase.date || purchase.createdAt).toLocaleString(),
+    amount: purchase.totalAmount || purchase.amount || 0,
   }));
   return (
     <>
